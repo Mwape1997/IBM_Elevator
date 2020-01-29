@@ -11,8 +11,8 @@ public class Controller {
     private int currentLocation;
     private int destination;
     private int nearestElevator;
-    private ArrayList<Elevator> listOfElevators = new ArrayList<Elevator>();    //create an arraylist of elevators
-    private ArrayList<Elevator> availableElevators = new ArrayList<Elevator>(); //create an arraylist of available elevators
+    private ArrayList<Elevator> listOfElevators = new ArrayList<>();    //create an arraylist of elevators
+    private ArrayList<Elevator> availableElevators = new ArrayList<>(); //create an arraylist of available elevators
     private Elevator elevator;
     private Elevator elevator1;
     private Elevator elevator2;
@@ -23,18 +23,17 @@ public class Controller {
     private Elevator elevator7;
 
 
-    public void checkAvailableElevators(){
-        for(int i = 0; i < listOfElevators.size(); i++)
-        {
-            if(listOfElevators.get(i).isAvailable()){           //get a list of all currently available elevators and add them to the available elevators list
-                availableElevators.add(listOfElevators.get(i));
+    private void checkAvailableElevators(){
+        for (Elevator listOfElevator : listOfElevators) {
+            if (listOfElevator.isAvailable()) {           //get a list of all currently available elevators and add them to the available elevators list
+                availableElevators.add(listOfElevator);
                 //System.out.println("Elevator: " + listOfElevators.get(i).getID() + " is available");
             }
         }
 
     }
 
-    public void addRequest(int currentLocation, int destination) throws InterruptedException {  //makes a request for an elevator.
+    private void addRequest(int currentLocation, int destination) throws InterruptedException {  //makes a request for an elevator.
         if((currentLocation>= FIRST) && (currentLocation<=LAST) && (destination>= FIRST) && (destination<=LAST) ){   //check if the input is valid
             elevator = getNearestElevator(currentLocation); //set the elevator being called to be the nearest available elevator
             if(elevator.getID() == 1){      //if the ID of that elevator is 1 then we know the first elevator is the nearest available
@@ -83,7 +82,7 @@ public class Controller {
 
     }
 
-    public Elevator getNearestElevator(int currentLocation) {
+    private Elevator getNearestElevator(int currentLocation) {
         this.currentLocation = currentLocation;
         int nearestCalc;
 
@@ -116,7 +115,7 @@ public class Controller {
 
 
         try {
-            controller.addRequest(14, 1);
+            controller.addRequest(52, 1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -128,7 +127,7 @@ public class Controller {
         }
 
         try {
-            controller.addRequest(23, 33);
+            controller.addRequest(23, 5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -137,7 +136,7 @@ public class Controller {
 
     }
 
-    public Controller(){
+    private Controller(){
         elevator1 = new Elevator(1, FIRST, true, false);    //create 7 elevator objects
         elevator2 = new Elevator(2, 7, true, false);
         elevator3 = new Elevator(3, 14, true, false);
