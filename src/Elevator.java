@@ -16,6 +16,7 @@ public class Elevator extends Thread {
     private String direction;
     private Passenger passenger;
     private Random random;
+    private Controller controller;
 
 
     Elevator(int id, int currentElevatorPos, boolean available, boolean isMoving){      //constructor for calling out object
@@ -82,7 +83,7 @@ public class Elevator extends Thread {
         this.requestFromFloor = requestFromFloor;
     }
 
-    private void goToDestination(int currentElevatorPos, int requestFromFloor, int destination) throws InterruptedException {
+    private synchronized void goToDestination(int currentElevatorPos, int requestFromFloor, int destination) throws InterruptedException {
         setMoving(true);    //if the elevator has been requested, it is now moving and no longer available for other requests.
         setAvailable(false);
         if(currentElevatorPos < destination) {  //if the current position of the elevator is less than the destination, then the direction is up.
@@ -98,16 +99,22 @@ public class Elevator extends Thread {
             currentElevatorPos++;
             setcurrentElevatorPos(currentElevatorPos);
            // System.out.print("Elevator: "+ getID() +"->" + currentElevatorPos);
-            TimeUnit.SECONDS.sleep(1);  //set a delay to simulate the elevator moving. (make the thread sleep)
+            TimeUnit.MILLISECONDS.sleep(300); //set a delay to simulate the elevator moving. (make the thread sleep)
         }
         while(currentElevatorPos > requestFromFloor){       //if it is below, decrease it
             currentElevatorPos--;
             setcurrentElevatorPos(currentElevatorPos);
            // System.out.print("Elevator: "+ getID() +"->" + currentElevatorPos);
-            TimeUnit.SECONDS.sleep(1);  //set a delay to simulate the elevator moving. (make the thread sleep)
+            TimeUnit.MILLISECONDS.sleep(300);  //set a delay to simulate the elevator moving. (make the thread sleep)
         }
         System.out.println();
-        System.out.println("Loading passengers "+ passenger.getPassengers() + " into Elevator: " + getID() +"...");  //loading the "passengers" at the requested floor.
+        System.out.print("Loading passengers "+ passenger.getPassengers() + " into Elevator: " + getID());  //loading the "passengers" at the requested floor.
+        System.out.print(".");
+        TimeUnit.MILLISECONDS.sleep(200);
+        System.out.print(".");
+        TimeUnit.MILLISECONDS.sleep(200);
+        System.out.print(".");
+        TimeUnit.MILLISECONDS.sleep(200);
         TimeUnit.SECONDS.sleep(2);  //make the thread sleep while loading passengers
         System.out.println();
         System.out.print("Elevator: " + getID() + " ");
@@ -115,8 +122,8 @@ public class Elevator extends Thread {
             currentElevatorPos++;
             setcurrentElevatorPos(currentElevatorPos);
           //  System.out.print("Elevator: "+ getID() + "->" + currentElevatorPos);
-            System.out.print("#");
-            TimeUnit.SECONDS.sleep(1);
+            System.out.print("->");
+            TimeUnit.MILLISECONDS.sleep(300);
         }
         System.out.println();
         System.out.print("Elevator: " + getID() + " ");
@@ -124,13 +131,21 @@ public class Elevator extends Thread {
             currentElevatorPos--;
             setcurrentElevatorPos(currentElevatorPos);
        //     System.out.print("Elevator: "+ getID() + "->" + currentElevatorPos);
-            System.out.print(".");
-            TimeUnit.SECONDS.sleep(1);
+            System.out.print("<-");
+            TimeUnit.MILLISECONDS.sleep(300);
         }
         System.out.println();
         setMoving(false);       //reset the moving and availability status
         setAvailable(true);
         System.out.println("Elevator: " + getID() + " reached destination floor: " + getcurrentElevatorPos() + " . Available: " + isAvailable());
+        checkOverflows();       //check if there are any free elevators for the overflow requests.
+    }
+
+    public synchronized void checkOverflows(){
+
+        if(isAvailable()){
+            this.setAvailable(true);
+        }
     }
 
     @Override

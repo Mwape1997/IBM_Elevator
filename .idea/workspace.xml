@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="368883fc-ecf1-41c4-8ec6-7f54bdd97fa4" name="Default Changelist" comment="V1.1 Minor updates to the elevator animation.">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="368883fc-ecf1-41c4-8ec6-7f54bdd97fa4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Elevator/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Elevator/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Elevator/Elevator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Elevator/Elevator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Elevator/Passenger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Elevator/Passenger.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Elevator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Passenger.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,8 +98,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579897622313</updated>
-      <workItem from="1579897626176" duration="51995000" />
+      <workItem from="1579897626176" duration="73955000" />
     </task>
+    <task id="LOCAL-00001" summary="V1.1 Minor updates to the elevator animation.">
+      <created>1580316552722</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580316552722</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
